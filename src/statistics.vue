@@ -10,12 +10,12 @@
         @click="$emit('view-bill',item['id'])"
       >
         <q-item-section>
-          <q-item-label>
-            {{ item['label'] }}
-          </q-item-label>
+          <q-item-label class="text-subtitle2 text-grey-8">{{ item['label'] }}</q-item-label>
+          <q-item-label class="text-subtitle2 text-grey-6">{{ item['dayStr']}}</q-item-label>
         </q-item-section>
-        <q-item-section side>
-          <q-item-label>￥{{ item['count'] }}</q-item-label>
+
+        <q-item-section side top>
+          <q-item-label >￥{{ item['count'] }}</q-item-label>
         </q-item-section>
       </q-item>
       <q-item>
@@ -81,11 +81,13 @@ export default {
           if (c >= day) {
             const {id, label} = el
             const {count} = _el
-            mList.push({id, label, count})
+            const dayStr = `${a}/${b}/${c}`
+            mList.push({id, label, count,day:c,dayStr})
             mSum += count
           }
         })
       })
+      mList.sort( (a,b) => a['day'] - b['day'])
       return {tSum, mSum, tList, mList}
     }
 
