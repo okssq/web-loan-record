@@ -61,7 +61,7 @@
                 align="middle"
                 :color="isActive(date) ? 'blue-5' :'grey'"
                 v-for="item in date['bills']"
-                key="item['billId']"
+                :key="item['billId']"
                 class="q-mt-xs cursor-pointer"
                 @click="$emit('view-bill',item['billId'])"
               >
