@@ -55,17 +55,17 @@
               <q-badge color="red-5">今天</q-badge>
             </div>
             <div v-else>{{ date.day }}</div>
-            <div class="column no-wrap overflow-auto" v-if="date.bills">
+            <div class="column no-wrap overflow-hidden" v-if="date.bills">
               <q-badge
                 multi-line
                 align="middle"
                 :color="isActive(date) ? 'blue-5' :'grey'"
                 v-for="item in date['bills']"
                 :key="item['billId']"
-                class="q-mt-xs cursor-pointer"
+                class="q-mt-xs  cursor-pointer"
                 @click="$emit('view-bill',item['billId'])"
               >
-                ￥{{ item.count }}--{{ item.label }}
+                <div class="full-width ellipsis">￥{{ item.count }}--{{ item.label }}</div>
               </q-badge>
             </div>
           </div>

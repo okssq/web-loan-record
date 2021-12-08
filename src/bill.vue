@@ -12,10 +12,10 @@
       @update:model-value="onBillChange"
     />
     <div class="text-subtitle2 text-grey-7 q-px-md ">
+      <div>【{{ selectBill['hkfs'] }}】</div>
       <span class="text-bold text-red-5">{{ selectBill['jkrq'] }}</span>
       借
-      <span class="text-bold text-red-5">{{ selectBill['jkje'] }}</span>
-      ({{ selectBill['hkfs'] }})
+      <span class="text-bold text-red-5">￥{{ selectBill['jkje'] }}.00</span>
     </div>
     <div class="col-shrink overflow-auto q-ml-md q-mt-md">
       <div
@@ -26,7 +26,7 @@
       >
         <div class="text-grey-6">第{{ index + 1 }}期</div>
         <div :class="isActive(item) ? 'text-blue-5' : 'text-grey-7'">
-          {{ item['day'] }} --- ￥{{ item['count'] }}
+          {{ item['day'] }} --- ￥{{ item['count'] }}.00
         </div>
       </div>
     </div>
