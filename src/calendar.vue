@@ -1,51 +1,51 @@
 <template>
   <div class="full-width full-height column no-wrap overflow-hidden">
     <div class="row items-center q-px-sm q-py-xs justify-between">
-      <q-btn icon="mdi-menu" round flat color="grey-9" @click="$emit('display')"/>
+      <q-btn color="grey-9" flat icon="mdi-menu" round @click="$emit('display')"/>
       <div class="row items-center">
         <q-select
-          dense
-          borderless
-          hide-dropdown-icon
-          class="text-subtitle1"
-          popup-content-class="text-subtitle2"
           v-model="selectYear"
           :options="years"
+          borderless
+          class="text-subtitle1"
+          dense
+          hide-dropdown-icon
+          popup-content-class="text-subtitle2"
           @update:model-value="updateDays"
         >
           <template v-slot:after><span class="text-subtitle1">年</span></template>
         </q-select>
         <q-select
-          dense
-          borderless
-          hide-dropdown-icon
-          class="text-subtitle1 q-ml-sm"
-          popup-content-class="text-subtitle2"
           v-model="selectMonth"
-          :options="months"
           :option-label="item => item+1"
+          :options="months"
+          borderless
+          class="text-subtitle1 q-ml-sm"
+          dense
+          hide-dropdown-icon
+          popup-content-class="text-subtitle2"
           @update:model-value="updateDays"
         >
           <template v-slot:after><span class="text-subtitle1">月</span></template>
         </q-select>
       </div>
-      <q-btn label="TODAY" flat color="blue-6" @click="goToToday"/>
+      <q-btn color="blue-6" flat label="TODAY" @click="goToToday"/>
     </div>
-    <q-separator />
+    <q-separator/>
     <div class="row no-wrap overflow-hidden" style="flex: 1">
       <slot name="left"></slot>
       <div class="full-height column no-wrap overflow-hidden" style="flex: 1">
         <div class="row text-grey-7 text-se text-caption text-bold" style="margin-top: -1px">
-          <span class="col my-border" v-for="weekText in weekTexts" :key="weekText">
+          <span v-for="weekText in weekTexts" :key="weekText" class="col my-border">
             星期{{ weekText }}
           </span>
         </div>
         <div class="row" style="flex: 1">
           <div
-            class="my-border item-day"
-            :class="selectMonth===date.month ? 'text-grey-9': 'text-grey-5'"
             v-for="(date,index) in days"
             :key="index"
+            :class="selectMonth===date.month ? 'text-grey-9': 'text-grey-5'"
+            class="my-border item-day"
           >
             <div
               v-if="date.year=== year && date.month===month && date.day === day"
@@ -55,14 +55,14 @@
               <q-badge color="red-5">今天</q-badge>
             </div>
             <div v-else>{{ date.day }}</div>
-            <div class="column no-wrap overflow-hidden" v-if="date.bills">
+            <div v-if="date.bills" class="column no-wrap overflow-hidden">
               <q-badge
-                multi-line
-                align="middle"
-                :color="isActive(date) ? 'blue-5' :'grey'"
                 v-for="item in date['bills']"
                 :key="item['billId']"
+                :color="isActive(date) ? 'blue-5' :'grey'"
+                align="middle"
                 class="q-mt-xs  cursor-pointer"
+                multi-line
                 @click="$emit('view-bill',item['billId'])"
               >
                 <div class="full-width ellipsis">￥{{ item.count }}--{{ item.label }}</div>

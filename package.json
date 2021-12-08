@@ -1,5 +1,5 @@
 {
-  "name": "loan-record",
+  "name": "web-loan-record",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",

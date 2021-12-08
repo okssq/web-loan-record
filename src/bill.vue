@@ -1,14 +1,14 @@
 <template>
-  <div class="bill overflow-hidden column no-wrap" v-if="selectBill">
+  <div v-if="selectBill" class="bill overflow-hidden column no-wrap">
     <q-select
-      dense
-      borderless
-      emit-value
-      map-options
-      class="q-px-md q-py-sm text-h6"
-      popup-content-class="text-grey-7"
       :model-value="billId"
       :options="bills"
+      borderless
+      class="q-px-md q-py-sm text-h6"
+      dense
+      emit-value
+      map-options
+      popup-content-class="text-grey-7"
       @update:model-value="onBillChange"
     />
     <div class="text-subtitle2 text-grey-7 q-px-md ">
@@ -21,8 +21,8 @@
       <div
         v-for="(item,index) in selectBill['hklb']"
         :key="index"
-        class="q-pl-md q-py-sm text-subtitle2 bill-item"
         :class="isActive(item) ? 'active' : ''"
+        class="q-pl-md q-py-sm text-subtitle2 bill-item"
       >
         <div class="text-grey-6">第{{ index + 1 }}期</div>
         <div :class="isActive(item) ? 'text-blue-5' : 'text-grey-7'">

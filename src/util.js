@@ -254,13 +254,13 @@ const getDaysByYearAndMonth = (year, month) => {
       const [a, b, c] = monthItem['day'].split('/')
       for (let k = 0; k < 42; k++) {
         const {year, month, day} = arr[k]
-        if(a==year && b==month+1 && c==day){
+        if (a == year && b == month + 1 && c == day) {
           const obj = {
-            billId:billItem['id'],
-            label:billItem['label'],
-            count:monthItem['count'],
+            billId: billItem['id'],
+            label: billItem['label'],
+            count: monthItem['count'],
           }
-          !arr[k]['bills'] && (arr[k]['bills']=[])
+          !arr[k]['bills'] && (arr[k]['bills'] = [])
           arr[k]['bills'].push(obj)
           break
         }
