@@ -20,6 +20,6 @@ git commit -m 'deploy'
 # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git master
 
 # 如果你要部署在 https://<USERNAME>.github.io/<REPO>
- git push -f git@github.com:okssq/loan-record.git master:gh-pages
+ git push -f git@github.com:okssq/web-loan-record.git master:gh-pages
 
 cd -
